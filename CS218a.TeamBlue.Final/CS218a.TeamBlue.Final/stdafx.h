@@ -10,6 +10,15 @@
 #include <stdio.h>
 #include <tchar.h>
 
+// Other includes
+#include <iostream>		// Standard IO stream operations
+#include <iomanip>		// Used for formatting cout e.g setw, left, right
+#include <string>		// To handle strings (not sure if we need it yet, we do if we add exception handeling)
+#include <sstream>		// To read the input.txt
 
+// Class includes
+
+#include "shortcuts.h"	// I like to make this class for adding code short cuts. so you can do something like me.c() for system("cls"); or me.p() for system("pause");
+#include "menus.h"		// Various menus will be coded here
 
 // TODO: reference additional headers your program requires here
