@@ -24,9 +24,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="shortcuts.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="menus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -39,9 +36,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CS218a.TeamBlue.Final.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="shortcuts.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="menus.cpp">

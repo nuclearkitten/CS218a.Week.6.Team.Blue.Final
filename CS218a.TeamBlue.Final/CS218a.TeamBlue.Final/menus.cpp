@@ -2,8 +2,8 @@
 
 using namespace std;
 
-// Initalize me with type shortcuts
-shortcuts me;
+// Initalize objects
+stockType stockTypeObj;
 
 // Main Menu
 void menus::PrintMain()
@@ -11,7 +11,7 @@ void menus::PrintMain()
 	// Initalize Variables
 	char myChoice;
 
-	me.c(); // Clear Screen
+	system("cls");
 
 	cout << "*********  First Investor's Heaven  *********" << endl;
 	cout << "*********         Main Menu         *********" << endl;
@@ -50,14 +50,14 @@ void menus::PrintMain()
 
 		break;
 	case '0':
-		me.c();
+		system("cls");
 		cout << "Have a nice day!" << endl;
-		me.p();
+		system("pause");
 		exit(1);
 		break;
 	default:
 		cout << "ERROR! You have made an invalid selection." << endl;
-		me.p();
+		system("pause");
 		PrintMain();
 		break;
 	}
@@ -70,7 +70,7 @@ void menus::PrintSetStock()
 	// Initalize Variables
 	char myChoice;
 
-	me.c(); // Clear Screen
+	system("cls");
 
 	cout << "*********  First Investor's Heaven  *********" << endl;
 	cout << "*********   Set Stock Information   *********" << endl;
@@ -90,35 +90,36 @@ void menus::PrintSetStock()
 	{
 	case '1':
 		// call function
-		
+		stockTypeObj.ProcessData("open");
 		break;
 	case '2':
 		// call funtion
-
+		stockTypeObj.ProcessData("close");
 		break;
 	case '3':
 		// call function
-
+		stockTypeObj.ProcessData("high");
 		break;
 	case '4':
 		// call function
-
+		stockTypeObj.ProcessData("low");
 		break;
 	case '5':
 		// call function
-
+		stockTypeObj.ProcessData("previous");
 		break;
 	case '6':
 		// call function
-
+		stockTypeObj.ProcessData("volume");
 		break;
 	case '0':
 		PrintMain();
 		break;
 	default:
 		cout << "ERROR! You have made an invalid selection." << endl;
-		me.p();
+		system("pause");
 		PrintSetStock();
 		break;
 	}
+	PrintMain();
 }

@@ -18,7 +18,6 @@
 
 // Class includes
 
-#include "shortcuts.h"	// I like to make this class for adding code short cuts. so you can do something like me.c() for system("cls"); or me.p() for system("pause");
 #include "menus.h"		// Various menus will be coded here
 #include "stockType.h"	// This is the class that the book wants us to use to process the stock object
 
