@@ -22,6 +22,15 @@
 // Created shortcuts class for adding coding shortcuts to the code EG me.p() for system("pause"); and so on
 // Created base for PrintMenu() function. Will need to have function calls added to it as more functions are added to the program.
 // Moved PrintMenu into separate class. Can add other menus to this class. Satisfies one of the 4 file (2 .h 2.cpp) requirements
+//
+// Revision Log
+// Revised: 6/13/2013
+// By: Aaron K. HEnderson
+// Summary: 
+// Added PrintSetStock() function to the menus class.
+//		Linked PrintSetStock() to Option 1 of PrintMain() function.
+// Moved Initialize (shortcuts me;) in the menus class from inside the PrintMain(); function to outside, making it global for that entire class.
+// Added Class stockType, currently empty.
 
 #include "stdafx.h"
 
