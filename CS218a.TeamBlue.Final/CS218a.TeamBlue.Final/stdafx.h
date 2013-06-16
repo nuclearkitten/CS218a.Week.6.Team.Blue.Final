@@ -17,7 +17,10 @@
 #include <sstream>		// To read the input.txt
 
 // Class includes
-
+#include "InformationCentral.h"		// Pass information to this class and it prints it.
 #include "stockType.h"	// This is the class that the book wants us to use to process the stock object
+
+// Random Number (for making fake stock information)
+#include <stdlib.h> // srand, rand
 
 // TODO: reference additional headers your program requires here

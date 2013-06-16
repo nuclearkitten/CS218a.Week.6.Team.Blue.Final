@@ -20,12 +20,12 @@ struct myStock{
 public:
 	void ProcessData(string option);
 
-	myStock myStockObj[10]; // We can have 10 Stock Options in our program.
+	myStock myStockObj[5]; // We can have 6 Stock Options in our program.
 	
 	
 	stockType()  // Constructor that initilizes the myStockOjb variables.
 	{
-		for (int i=0; i<10; i++)
+		for (int i=0; i<5; i++)
 		{
 			myStockObj[i].stockSymbol = "NULL" + i;
 			myStockObj[i].stockOpen = 0;

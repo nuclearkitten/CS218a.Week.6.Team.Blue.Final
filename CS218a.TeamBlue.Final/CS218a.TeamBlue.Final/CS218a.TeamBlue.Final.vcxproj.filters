@@ -27,6 +27,9 @@
     <ClInclude Include="stockType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="InformationCentral.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -36,6 +39,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="stockType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InformationCentral.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

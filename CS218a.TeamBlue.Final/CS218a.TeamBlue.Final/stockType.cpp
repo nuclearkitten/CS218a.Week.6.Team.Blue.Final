@@ -18,7 +18,7 @@ void stockType::ProcessData(string option)
 	cout << "Enter Stock Symbol: ";
 	cin >> mySymbol;
 
-	for (int i=0;i<10;i++) {
+	for (int i=0;i<5;i++) {
 		if (myStockObj[i].stockSymbol == mySymbol) {
 			found = true;
 			index = i;
@@ -34,14 +34,14 @@ void stockType::ProcessData(string option)
 
 			cout << "*********  First Investor's Heaven  *********" << endl;
 			cout << "*********   Set Stock Information   *********" << endl;
-			cout << "Current open price: " << myStockObj[index].stockOpen << endl;
+			cout << "Current open price: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myStockObj[index].stockOpen << endl;
 			cout << "Enter new open price: ";
 			cin >> myAns;
 			
 			system("cls");
 
-			cout << "Previous open price: " << myStockObj[index].stockOpen << endl;
-			cout << "New open price: " << myAns;
+			cout << "Previous open price: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myStockObj[index].stockOpen << endl;
+			cout << "New open price: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myAns;
 			myStockObj[index].stockOpen = myAns;
 
 		}
@@ -52,15 +52,18 @@ void stockType::ProcessData(string option)
 
 			cout << "*********  First Investor's Heaven  *********" << endl;
 			cout << "*********   Set Stock Information   *********" << endl;
-			cout << "Current close price: " << myStockObj[index].stockClose << endl;
+			cout << "Current close price: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myStockObj[index].stockClose << endl;
 			cout << "Enter new close price: ";
 			cin >> myAns;
 			
 			system("cls");
 
-			cout << "Previous close price: " << myStockObj[index].stockClose << endl;
-			cout << "New close price: " << myAns;
+			cout << "Previous close price: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myStockObj[index].stockClose << endl;
+			cout << "New close price: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myAns;
 			myStockObj[index].stockClose = myAns;
+
+			// Update Percent Gain
+			myStockObj[index].percentGain = ((myStockObj[index].stockClose / myStockObj[index].previousClose) -1)*100;
 		}
 		else if (option == "high") {
 			system("cls");
@@ -69,14 +72,14 @@ void stockType::ProcessData(string option)
 
 			cout << "*********  First Investor's Heaven  *********" << endl;
 			cout << "*********   Set Stock Information   *********" << endl;
-			cout << "Current high price: " << myStockObj[index].stockHigh << endl;
+			cout << "Current high price: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myStockObj[index].stockHigh << endl;
 			cout << "Enter new high price: ";
 			cin >> myAns;
 			
 			system("cls");
 
-			cout << "Previous high price: " << myStockObj[index].stockHigh << endl;
-			cout << "New high price: " << myAns;
+			cout << "Previous high price: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myStockObj[index].stockHigh << endl;
+			cout << "New high price: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myAns;
 			myStockObj[index].stockHigh = myAns;
 		}
 		else if (option == "low") {
@@ -86,14 +89,14 @@ void stockType::ProcessData(string option)
 
 			cout << "*********  First Investor's Heaven  *********" << endl;
 			cout << "*********   Set Stock Information   *********" << endl;
-			cout << "Current low price: " << myStockObj[index].stockLow << endl;
+			cout << "Current low price: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myStockObj[index].stockLow << endl;
 			cout << "Enter new low price: ";
 			cin >> myAns;
 			
 			system("cls");
 
-			cout << "Previous low price: " << myStockObj[index].stockLow << endl;
-			cout << "New low price: " << myAns;
+			cout << "Previous low price: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myStockObj[index].stockLow << endl;
+			cout << "New low price: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myAns;
 			myStockObj[index].stockLow = myAns;
 		}
 		else if (option == "previous") {
@@ -103,15 +106,18 @@ void stockType::ProcessData(string option)
 
 			cout << "*********  First Investor's Heaven  *********" << endl;
 			cout << "*********   Set Stock Information   *********" << endl;
-			cout << "Current previous close price: " << myStockObj[index].previousClose << endl;
+			cout << "Current previous close price: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myStockObj[index].previousClose << endl;
 			cout << "Enter new previous close price: ";
 			cin >> myAns;
 			
 			system("cls");
 
-			cout << "Previous previous close price: " << myStockObj[index].previousClose << endl;
-			cout << "New previous close price: " << myAns;
+			cout << "Previous previous close price: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myStockObj[index].previousClose << endl;
+			cout << "New previous close price: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myAns;
 			myStockObj[index].previousClose = myAns;
+
+			// Update Percent Gain
+			myStockObj[index].percentGain = ((myStockObj[index].stockClose / myStockObj[index].previousClose) -1)*100;
 		}
 		else if (option == "volume") {
 			system("cls");
@@ -120,14 +126,14 @@ void stockType::ProcessData(string option)
 
 			cout << "*********  First Investor's Heaven  *********" << endl;
 			cout << "*********   Set Stock Information   *********" << endl;
-			cout << "Current stock volume: " << myStockObj[index].stockVolume << endl;
+			cout << "Current stock volume: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myStockObj[index].stockVolume << endl;
 			cout << "Enter new stock volume: ";
 			cin >> myAns;
 			
 			system("cls");
 
-			cout << "Previous stock volume: " << myStockObj[index].stockVolume << endl;
-			cout << "New stock volume: " << myAns;
+			cout << "Previous stock volume: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myStockObj[index].stockVolume << endl;
+			cout << "New stock volume: " << setprecision (2) << setiosflags(ios::fixed) << setiosflags(ios::showpoint) << myAns;
 			myStockObj[index].stockVolume = myAns;
 		}
 		else {
@@ -135,6 +141,7 @@ void stockType::ProcessData(string option)
 		}
 	}
 	else {
+		system("cls");
 		cout << "Stock Symbol not found!" << endl;
 	}
 	cout << endl;
