@@ -15,6 +15,9 @@
 #include <iomanip>		// Used for formatting cout e.g setw, left, right
 #include <string>		// To handle strings (not sure if we need it yet, we do if we add exception handeling)
 #include <sstream>		// To read the input.txt
+#include <vector>		// <vector>
+#include <fstream>		// Used to read input instead of <sstream>
+#include <algorithm>	// 
 
 // Class includes
 #include "InformationCentral.h"		// Pass information to this class and it prints it.
@@ -24,3 +27,4 @@
 #include <stdlib.h> // srand, rand
 
 // TODO: reference additional headers your program requires here
+

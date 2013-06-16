@@ -120,33 +120,41 @@
 // Updated ProcessData()
 //		When updating stockClose it auto updates percentGain
 //		When updating previousClose it auto updates percentGain
+//
+// Revision Log
+// Revised: 6/15/2013
+// By: Jose Padilla
+// Summary:
+// Added ground work for LoadData()
+// Added #include
+//		vector
+//		fstream
+//		algorithm
+//	Created base stockType.txt
+//
+// Revision Log
+// Revised: 6/16/2013
+// By: Aaron K. Henderson
+// Summary:
+// Moved #includes to stdafx.h
+// Cleaned up redundant code
+// Used code in LoadData() to populate data in myStock.myStockObj
+// Moved stockType.txt from root of project dir to CS218a.TeamBlue.Final
+// Cleaned up stockType.txt
+// Removed extra options in stockType.txt to bring total down to 5 to match the book example.
 
 
 #include "stdafx.h"
-#include <iostream>
-#include <string>
-#include <vector>
-#include <fstream>
-#include <algorithm>
 
 
 using namespace std;
 
 // Forwared declare of functions
-void LoadData();
-void PopulateData();
-void PrintMain(vector<string>& symbol, vector<double>& openingPrice, vector<double>& closingPrice, vector<double>& todayHigh, vector<double>& todayLow, vector<double>& prevClose, vector<int>& volume);
+void LoadData(stockType &sTo);
+void PopulateData(stockType &sTo, InformationCentral &mSo);
+void PrintMain();
+
 void SetStock();
-
-vector<string> symbol;
-vector<double> openingPrice;
-vector<double> closingPrice;
-vector<double> todayHigh;
-vector<double> todayLow;
-vector<double> prevClose;
-vector<int> volume;
-
-ofstream outStkRep;
 
 // Global myStock object
 stockType myStock;
@@ -154,7 +162,7 @@ InformationCentral info;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	LoadData();// Loads data into myStock
+	LoadData(myStock);// Loads data into myStock
 	
 	
 	
@@ -164,13 +172,14 @@ int _tmain(int argc, _TCHAR* argv[])
 	return 0;
 }
 
-void LoadData()
+void LoadData(stockType &sTo)
 {
 	ifstream infile;
 	int index=0;
-	int e7;
-	double e2, e3, e4, e5, e6;
+	int e8;
+	double e2, e3, e4, e5, e6 ,e7;
 	string e1;
+	int i=0;
 	
 	infile.open("stockType.txt");
 	if (!infile)
@@ -181,22 +190,31 @@ void LoadData()
 	
 	while (infile)
 		{
-			infile >> e1 >> e2 >> e3 >> e4 >> e5 >> e6 >> e7;
-			symbol.push_back(e1);
-			openingPrice.push_back(e2);
-			closingPrice.push_back(e3);
-			todayHigh.push_back(e4);
-			todayLow.push_back(e5);
-			prevClose.push_back(e6);
-			volume.push_back(e7);
+			infile >> e1 >> e2 >> e3 >> e4 >> e5 >> e6 >> e7 >> e8;
+			
+			myStock.myStockObj[i].stockSymbol = e1;
+			
+			myStock.myStockObj[i].stockOpen = e2;
+			
+			myStock.myStockObj[i].stockClose = e3;
+			
+			myStock.myStockObj[i].stockHigh = e4;
+
+			myStock.myStockObj[i].stockLow = e5;
+
+			myStock.myStockObj[i].previousClose = e6;
+
+			myStock.myStockObj[i].percentGain = e7;
+
+			myStock.myStockObj[i].stockVolume = e8;
+
+			i++;
 	}
 	infile.close();
 
-
-	system("pause");
 }
 // Main Menu
-void ::PrintMain(vector<string>& symbol, vector<double>& openingPrice, vector<double>& closingPrice, vector<double>& todayHigh, vector<double>& todayLow, vector<double>& prevClose, vector<int>& volume);
+void PrintMain()
 {
 
 	// Initalize Variables
@@ -330,7 +348,7 @@ void SetStock()
 }
 
 
-void PopulateData()
+void PopulateData(stockType &sTo, InformationCentral &mSo)
 {
 	for (int i=0; i<5; i++)
 	{
