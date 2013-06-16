@@ -18,7 +18,6 @@
 
 // Class includes
 
-#include "menus.h"		// Various menus will be coded here
 #include "stockType.h"	// This is the class that the book wants us to use to process the stock object
 
 // TODO: reference additional headers your program requires here
