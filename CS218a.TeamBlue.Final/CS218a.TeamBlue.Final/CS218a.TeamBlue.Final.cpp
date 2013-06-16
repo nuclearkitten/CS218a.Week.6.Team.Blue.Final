@@ -123,14 +123,30 @@
 
 
 #include "stdafx.h"
+#include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+#include <algorithm>
+
 
 using namespace std;
 
 // Forwared declare of functions
-void LoadData(stockType &sTo);
-void PopulateData(stockType &sTo);
-void PrintMain();
+void LoadData();
+void PopulateData();
+void PrintMain(vector<string>& symbol, vector<double>& openingPrice, vector<double>& closingPrice, vector<double>& todayHigh, vector<double>& todayLow, vector<double>& prevClose, vector<int>& volume);
 void SetStock();
+
+vector<string> symbol;
+vector<double> openingPrice;
+vector<double> closingPrice;
+vector<double> todayHigh;
+vector<double> todayLow;
+vector<double> prevClose;
+vector<int> volume;
+
+ofstream outStkRep;
 
 // Global myStock object
 stockType myStock;
@@ -138,9 +154,9 @@ InformationCentral info;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	// Loads data into myStock
-	// Needs to be replaced with code that loads data from input.txt
-	LoadData(myStock);
+	LoadData();// Loads data into myStock
+	
+	
 	
 	// Call PrintMenu()
 	PrintMain();
@@ -148,67 +164,39 @@ int _tmain(int argc, _TCHAR* argv[])
 	return 0;
 }
 
-void LoadData(stockType &sTo)
+void LoadData()
 {
-	// The following needs to be replaced with code that reads input.txt
-	sTo.myStockObj[0].stockSymbol = "ABC";
-	sTo.myStockObj[0].stockOpen = 123.45;
-	sTo.myStockObj[0].stockClose = 130.95;
-	sTo.myStockObj[0].stockHigh = 132.00;
-	sTo.myStockObj[0].stockLow = 125.00;
-	sTo.myStockObj[0].previousClose = 120.50;
-	sTo.myStockObj[0].percentGain = 8.67;
-	sTo.myStockObj[0].stockVolume = 10000;
-
-	sTo.myStockObj[1].stockSymbol = "AOLK";
-	sTo.myStockObj[1].stockOpen = 80.00;
-	sTo.myStockObj[1].stockClose = 75.00;
-	sTo.myStockObj[1].stockHigh = 82.00;
-	sTo.myStockObj[1].stockLow = 74.00;
-	sTo.myStockObj[1].previousClose = 83.00;
-	sTo.myStockObj[1].percentGain = -9.64;
-	sTo.myStockObj[1].stockVolume = 5000;
-
-	sTo.myStockObj[2].stockSymbol = "CSCO";
-	sTo.myStockObj[2].stockOpen = 100.00;
-	sTo.myStockObj[2].stockClose = 102.00;
-	sTo.myStockObj[2].stockHigh = 105.00;
-	sTo.myStockObj[2].stockLow = 98.00;
-	sTo.myStockObj[2].previousClose = 101.00;
-	sTo.myStockObj[2].percentGain = 0.99;
-	sTo.myStockObj[2].stockVolume = 25000;
-
-	sTo.myStockObj[3].stockSymbol = "IBD";
-	sTo.myStockObj[3].stockOpen = 68;
-	sTo.myStockObj[3].stockClose = 71;
-	sTo.myStockObj[3].stockHigh = 72;
-	sTo.myStockObj[3].stockLow = 67;
-	sTo.myStockObj[3].previousClose = 75;
-	sTo.myStockObj[3].percentGain = -5.33;
-	sTo.myStockObj[3].stockVolume = 15000;
-
-	sTo.myStockObj[4].stockSymbol = "MSET";
-	sTo.myStockObj[4].stockOpen = 120.00;
-	sTo.myStockObj[4].stockClose = 140.00;
-	sTo.myStockObj[4].stockHigh = 145.00;
-	sTo.myStockObj[4].stockLow = 140.00;
-	sTo.myStockObj[4].previousClose = 115.00;
-	sTo.myStockObj[4].percentGain = 21.74;
-	sTo.myStockObj[4].stockVolume = 30920;
-
-		
-	cout << "Temp Stock Symbols:" << endl;
-	for (int i=0; i<5; i++)
-	{
-		cout << sTo.myStockObj[i].stockSymbol << endl;
+	ifstream infile;
+	int index=0;
+	int e7;
+	double e2, e3, e4, e5, e6;
+	string e1;
+	
+	infile.open("stockType.txt");
+	if (!infile)
+		{
+			cout << "No open file." << endl;
+			cout << endl;
 	}
-	cout << endl;
+	
+	while (infile)
+		{
+			infile >> e1 >> e2 >> e3 >> e4 >> e5 >> e6 >> e7;
+			symbol.push_back(e1);
+			openingPrice.push_back(e2);
+			closingPrice.push_back(e3);
+			todayHigh.push_back(e4);
+			todayLow.push_back(e5);
+			prevClose.push_back(e6);
+			volume.push_back(e7);
+	}
+	infile.close();
 
 
 	system("pause");
 }
 // Main Menu
-void ::PrintMain()
+void ::PrintMain(vector<string>& symbol, vector<double>& openingPrice, vector<double>& closingPrice, vector<double>& todayHigh, vector<double>& todayLow, vector<double>& prevClose, vector<int>& volume);
 {
 
 	// Initalize Variables
@@ -342,7 +330,7 @@ void SetStock()
 }
 
 
-void PopulateData(stockType &sTo, InformationCentral &mSo)
+void PopulateData()
 {
 	for (int i=0; i<5; i++)
 	{
@@ -356,3 +344,4 @@ void PopulateData(stockType &sTo, InformationCentral &mSo)
 		mSo.mSo[i].stockVolume = sTo.myStockObj[i].stockVolume;
 	}
 }
+
